@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:travel_bee/themes/theme_layout.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
@@ -7,6 +9,9 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.black54,
+      padding: EdgeInsets.symmetric(
+        horizontal: ThemeLayout.edgeHorizontalPadding,
+      ),
       height: 60,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -17,7 +22,9 @@ class TopBar extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Text('User'),
+            child: Icon(
+              PhosphorIcons.user(),
+            ),
           ),
         ],
       ),
