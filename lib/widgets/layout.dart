@@ -6,19 +6,19 @@ class Layout extends StatelessWidget {
   const Layout({
     super.key,
     this.child,
-    this.disablePadding,
     this.topBar,
+    this.enablePadding = true,
   });
 
   final Widget? child;
   final bool? topBar;
-  final bool? disablePadding;
+  final bool? enablePadding;
   // final bool
 
   @override
   Widget build(context) {
-
-    final double padding = disablePadding == true ? 0 : ThemeLayout.edgeHorizontalPadding ;
+    final double padding =
+        enablePadding != true ? 0 : ThemeLayout.edgeHorizontalPadding;
 
     return Scaffold(
       body: SafeArea(

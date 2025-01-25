@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class EventImageHeader extends StatelessWidget {
   const EventImageHeader({
     super.key,
-    required this.imageHeight, required this.imageUrl,
+    required this.imageHeight,
+    required this.imageUrl,
   });
 
   final double imageHeight;

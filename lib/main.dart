@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_bee/pages/details_page.dart';
 import 'package:travel_bee/pages/home.dart';
+import 'package:travel_bee/pages/listing_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DetailsPage(),
+      home: const ListingPage(),
     );
   }
 }
