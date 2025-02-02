@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:travel_bee/themes/color_theme.dart';
+import 'package:travel_bee/themes/font_theme.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
 class TopBar extends StatelessWidget {
@@ -12,11 +15,18 @@ class TopBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: ThemeLayout.edgeHorizontalPadding,
       ),
-      height: 60,
+      height: 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text("Logo"),
+          Text(
+            "Travel Bee",
+            style: GoogleFonts.cedarvilleCursive().copyWith(
+              fontSize: 32,
+              fontWeight: FontWeight.w900,
+              color: ColorTheme.primaryColor,
+            ),
+          ),
           const SizedBox(width: 6),
           Container(
             decoration: BoxDecoration(

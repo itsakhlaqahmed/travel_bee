@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/themes/color_theme.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
 class SearchBarCustom extends StatefulWidget {
@@ -26,7 +27,7 @@ class _SearchBarCustom extends State<SearchBarCustom> {
         alignment: Alignment.center,
         height: 50,
         decoration: BoxDecoration(
-          color: Colors.amberAccent,
+          color: ColorTheme.backgroundGrey,
           borderRadius: BorderRadius.circular(40),
         ),
         child: TextField(
@@ -34,12 +35,12 @@ class _SearchBarCustom extends State<SearchBarCustom> {
           onChanged: widget.onChange,
           style: const TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
           decoration: const InputDecoration(
             hintText: 'Search Places',
             contentPadding: EdgeInsets.symmetric(
-              horizontal: 16,
+              horizontal: 20,
               vertical: 8,
             ),
             suffixIcon: Icon(
