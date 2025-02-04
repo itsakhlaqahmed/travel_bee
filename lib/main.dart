@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_bee/pages/common/auth/auth.dart';
 import 'package:travel_bee/pages/details_page.dart';
 import 'package:travel_bee/pages/home.dart';
 import 'package:travel_bee/pages/listing_page.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         useMaterial3: true,
       ),
-      home:  ListingPage(),
+      home:  Auth(),
     );
   }
 }
