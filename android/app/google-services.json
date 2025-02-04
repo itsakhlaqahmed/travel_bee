@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "420810891567",
+    "project_id": "travelduck-2c225",
+    "storage_bucket": "travelduck-2c225.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420810891567:android:b6eb1aa4e36516555601da",
+        "android_client_info": {
+          "package_name": "com.example.travel_bee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOWR7TYWXMyphJSNeH_a8Ku2kTFJZvQNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

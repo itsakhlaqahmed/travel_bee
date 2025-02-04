@@ -10,7 +10,6 @@ class DetailsPage extends StatelessWidget {
   Widget build(context) {
     final height = MediaQuery.of(context).size.height;
     final double imageHeight = height * .4;
-    final stackHeight = height * .45;
 
     return Layout(
       enablePadding: false,
