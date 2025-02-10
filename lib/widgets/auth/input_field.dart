@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/themes/font_theme.dart';
 
 class InputField extends StatefulWidget {
   const InputField({
     super.key,
-    this.label,
+    required this.label,
     this.placeholderText,
     this.placeholderIcon,
     this.onSave,
@@ -12,7 +13,7 @@ class InputField extends StatefulWidget {
     this.onChanged,
   });
 
-  final String? label;
+  final String label;
   final String? placeholderText;
   final IconData? placeholderIcon;
   final bool? hideText;
@@ -33,18 +34,19 @@ class _InputFieldState extends State<InputField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          // widget.label,
-          'text',
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          widget.label,
+          style: FontTheme.subHeadingStyle.copyWith(
+            color: Colors.black54,
+          ),
         ),
         const SizedBox(
-          height: 6,
+          height: 12,
         ),
         TextFormField(
           style: const TextStyle(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
+            color: Colors.black54,
+            fontSize: 20
           ),
           obscureText: widget.hideText == true ? _isTextHidden : false,
           autocorrect: false,
@@ -52,8 +54,10 @@ class _InputFieldState extends State<InputField> {
           validator: widget.onValidation,
           onChanged: widget.onChanged,
           decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 16,
+            ),
             suffixIcon: widget.hideText ?? false
                 ? IconButton(
                     onPressed: () {
@@ -66,22 +70,22 @@ class _InputFieldState extends State<InputField> {
                         : const Icon(Icons.visibility_off_outlined),
                   )
                 : null,
-            label: Row(
-              children: [
-                Icon(
-                  widget.placeholderIcon,
-                  // color: const Color.fromARGB(255, 253, 129, 59),
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                // Text(widget.placeholderText),
-              ],
-            ),
+            // label: Row(
+            //   children: [
+            //     Icon(
+            //       widget.placeholderIcon,
+            //       // color: const Color.fromARGB(255, 253, 129, 59),
+            //     ),
+            //     const SizedBox(
+            //       width: 8,
+            //     ),
+            //     // Text(widget.placeholderText),
+            //   ],
+            // ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(48),
               borderSide: const BorderSide(
-                width: 1.0,
+                width: 1,
               ),
             ),
           ),

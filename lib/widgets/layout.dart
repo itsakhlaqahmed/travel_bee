@@ -28,8 +28,7 @@ class Layout extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
-                child: 
-                Column(
+                child: Column(
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(
