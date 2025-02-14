@@ -1,23 +1,23 @@
 class DestinationModel {
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final String city;
-  final String country;
-  final String description;
-  final String bestTimeToVisit;
-  final double latitude;
-  final double longitude;
+  final String? country;
+  final String? description;
+  final String? bestTimeToVisit;
+  final double? latitude;
+  final double? longitude;
   final List<String> imageUrl;
 
   DestinationModel({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     required this.city,
-    required this.country,
-    required this.description,
-    required this.bestTimeToVisit,
-    required this.latitude,
-    required this.longitude,
+    this.country,
+    this.description,
+    this.bestTimeToVisit,
+    this.latitude,
+    this.longitude,
     required this.imageUrl,
   });
 
@@ -31,7 +31,7 @@ class DestinationModel {
       bestTimeToVisit: data['bestTimeToVisit'],
       latitude: data['latitude'],
       longitude: data['longitude'],
-      imageUrl: data['imageUrl'],
+      imageUrl: data['imageUrls'].cast<String>(),
     );
   }
 

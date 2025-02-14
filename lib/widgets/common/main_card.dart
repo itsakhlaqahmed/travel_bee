@@ -7,16 +7,23 @@ class MainCard extends StatelessWidget {
     super.key,
     required this.width,
     required this.type,
+    required this.image,
+    required this.title,
+    this.onTap,
   });
 
   final double width;
   final CardType type;
+  final String image;
+  final String title;
+  final Function? onTap;
 
   @override
   Widget build(context) {
     final height = type == CardType.vertical ? width * (4 / 3) : width;
 
     return InkWell(
+      onTap: onTap != null ? () => onTap!() : null,
       child: Container(
         width: width,
         height: height,
@@ -36,7 +43,7 @@ class MainCard extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Image.network(
-              'https://profit.pakistantoday.com.pk/wp-content/uploads/2020/10/31-1.jpg',
+              image,
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
             ),
@@ -52,12 +59,12 @@ class MainCard extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               bottom: 12,
               child: Center(
                 child: Text(
-                  'The Karachi City',
-                  style: TextStyle(
+                  title,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

@@ -40,6 +40,7 @@ class Layout extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 32,)
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:riverpod/riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:travel_bee/models/hotel_model.dart';
 import 'package:travel_bee/providers/providers.dart';
 

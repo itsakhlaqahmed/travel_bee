@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/models/destination_model.dart';
 import 'package:travel_bee/widgets/details_page/details_card.dart';
 import 'package:travel_bee/widgets/details_page/event_image_header.dart';
 import 'package:travel_bee/widgets/layout.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  const DetailsPage({super.key, required this.destination});
+  final DestinationModel destination;
 
   @override
   Widget build(context) {
@@ -24,17 +26,17 @@ class DetailsPage extends StatelessWidget {
             children: [
               EventImageHeader(
                 imageHeight: imageHeight,
-                imageUrl:
-                    'https://profit.pakistantoday.com.pk/wp-content/uploads/2020/10/31-1.jpg',
+                imageUrl: '${destination.imageUrl[0]} ',
+                
               ),
-              const Positioned(
+              Positioned(
                 bottom: -50,
                 left: 0,
                 right: 0,
                 child: Center(
                   child: DetailsCard(
-                    title: 'National Creativity',
-                    location: 'California, USA',
+                    title: destination.name!,
+                    location: destination.city,
                     date: '20 July, 03:00 pm',
                   ),
                 ),

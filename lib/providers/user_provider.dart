@@ -1,4 +1,4 @@
-import 'package:riverpod/riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user_model.dart'; // Import your model
 import 'package:travel_bee/providers/providers.dart';
