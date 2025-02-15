@@ -1,6 +1,6 @@
 class DestinationModel {
   final String? id;
-  final String? name;
+  final String name;
   final String city;
   final String? country;
   final String? description;
@@ -11,7 +11,7 @@ class DestinationModel {
 
   DestinationModel({
     this.id,
-    this.name,
+    required this.name,
     required this.city,
     this.country,
     this.description,

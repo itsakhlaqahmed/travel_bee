@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_bee/models/destination_model.dart';
+import 'package:travel_bee/themes/theme_layout.dart';
 import 'package:travel_bee/widgets/details_page/details_card.dart';
 import 'package:travel_bee/widgets/details_page/event_image_header.dart';
 import 'package:travel_bee/widgets/layout.dart';
@@ -27,22 +28,39 @@ class DetailsPage extends StatelessWidget {
               EventImageHeader(
                 imageHeight: imageHeight,
                 imageUrl: '${destination.imageUrl[0]} ',
-                
               ),
               Positioned(
                 bottom: -50,
                 left: 0,
                 right: 0,
-                child: Center(
-                  child: DetailsCard(
-                    title: destination.name!,
-                    location: destination.city,
-                    date: '20 July, 03:00 pm',
-                  ),
+                // child: Center(
+                child: Column(
+                  children: [
+                    DetailsCard(
+                      title: destination.name!,
+                      location: destination.city,
+                      date: '20 July, 03:00 pm',
+                    ),
+                  ],
                 ),
+                // ),
               ),
             ],
           ),
+          const SizedBox(
+            height: 80,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: ThemeLayout.edgeHorizontalPadding),
+            child: Text(
+              destination.description!,
+              style: const TextStyle(
+                color: Colors.black87,
+                fontSize: 14,
+              ),
+            ),
+          )
         ],
       ),
     );

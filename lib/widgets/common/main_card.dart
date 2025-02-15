@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 enum CardType { square, vertical }
@@ -46,31 +47,38 @@ class MainCard extends StatelessWidget {
               image,
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
+              width: double.infinity,
             ),
             Container(
+              width: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withAlpha((255 * .6).toInt()),
+                    Colors.black.withAlpha((255 * .8).toInt()),
                   ],
                 ),
               ),
             ),
             Positioned(
-              bottom: 12,
-              child: Center(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+              bottom: 16,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Text(
+                    title.length <= 16 ? title: '${title.substring(0, 16)}...',
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
+              
             ),
           ],
         ),

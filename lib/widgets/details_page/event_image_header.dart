@@ -19,7 +19,7 @@ class EventImageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-clearImageCache(imageUrl);
+// clearImageCache(imageUrl);
     return Stack(
       children: [
         Container(
@@ -33,7 +33,6 @@ clearImageCache(imageUrl);
             ),
           ),
           child: Image.network(
-            // '$imageUrl?/${DateTime.now().millisecondsSinceEpoch}',
             filterQuality: FilterQuality.high,
             imageUrl,
             fit: BoxFit.cover,

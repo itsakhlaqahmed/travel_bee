@@ -40,10 +40,11 @@ class CardGallery extends StatelessWidget {
         .where((destination) => destination.key.isEven)
         .map((destination) {
       return MainCard(
+        key: GlobalKey(),
         width: cardWidth,
         type: getCardType(),
         image: destination.value.imageUrl[0],
-        title: destination.value.city,
+        title: destination.value.name,
         onTap: () => goToDetailsPage(context, destination.value),
       );
     }).toList();
@@ -51,10 +52,11 @@ class CardGallery extends StatelessWidget {
     final column2 =
         data.asMap().entries.where((e) => e.key.isOdd).map((destination) {
       return MainCard(
+        key: GlobalKey(),
         width: cardWidth,
         type: getCardType(),
         image: destination.value.imageUrl[0],
-        title: destination.value.city,
+        title: destination.value.name,
         onTap: () => goToDetailsPage(context, destination.value),
       );
     }).toList();
@@ -66,18 +68,6 @@ class CardGallery extends StatelessWidget {
           spacing: 12,
           children: [
             ...column1,
-            // MainCard(
-            //   width: cardWidth,
-            //   type: CardType.vertical,
-            // ),
-            // MainCard(
-            //   width: cardWidth,
-            //   type: getCardType(),
-            // ),
-            // MainCard(
-            //   width: cardWidth,
-            //   type: getCardType(),
-            // ),
           ],
         ),
         const SizedBox(width: gap),
@@ -85,22 +75,6 @@ class CardGallery extends StatelessWidget {
           spacing: 12,
           children: [
             ...column2
-            // MainCard(
-            //   width: cardWidth,
-            //   type: CardType.square,
-            // ),
-            // MainCard(
-            //   width: cardWidth,
-            //   type: getCardType(),
-            // ),
-            // MainCard(
-            //   width: cardWidth,
-            //   type: getCardType(),
-            // ),
-            // MainCard(
-            //   width: cardWidth,
-            //   type: getCardType(),
-            // ),
           ],
         ),
       ],
