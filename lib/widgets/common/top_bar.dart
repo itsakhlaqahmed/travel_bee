@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:travel_bee/themes/color_theme.dart';
-import 'package:travel_bee/themes/font_theme.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
 class TopBar extends StatelessWidget {

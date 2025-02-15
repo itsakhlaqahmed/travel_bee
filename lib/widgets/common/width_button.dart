@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/themes/color_theme.dart';
 import 'package:travel_bee/themes/font_theme.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
@@ -15,17 +16,22 @@ class WidthButton extends StatelessWidget {
           vertical: 20,
         ),
         decoration: BoxDecoration(
-          color: Colors.amberAccent,
+          color: ColorTheme.primaryColor,
           borderRadius: BorderRadius.circular(ThemeLayout.fullRadius),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(.5),
+              blurRadius: 2,
+              spreadRadius: 2,
+              offset: const Offset(1, 2),
+            ),
+          ],
         ),
         child: Center(
           child: Text(
             'Login',
             style: FontTheme.subHeadingStyle.copyWith(
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-              fontSize: 20
-            ),
+                fontWeight: FontWeight.w600, color: Colors.black, fontSize: 20),
           ),
         ),
       ),

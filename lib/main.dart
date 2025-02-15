@@ -9,6 +9,9 @@ import 'package:travel_bee/pages/details_page.dart';
 import 'package:travel_bee/pages/home.dart';
 import 'package:travel_bee/pages/listing_page.dart';
 import 'package:travel_bee/themes/color_theme.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -29,10 +32,17 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  int _tabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final details = DestinationModel(
@@ -42,7 +52,8 @@ class MyApp extends StatelessWidget {
         'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/24/9b/85/hotel-exterior.jpg?w=1200&h=-1&s=1'
       ],
       country: 'Pakistan',
-      description: """This is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfds This is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfdsThis is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfds This is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfds
+      description:
+          """This is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfds This is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfdsThis is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfds This is descript for a sdfs sdfsdfsd dfsfasfdfs safdsfds
           """,
     );
 
@@ -53,7 +64,40 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         useMaterial3: true,
       ),
-      home: DetailsPage(destination: details),
+      home: Scaffold(
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 64,
+          iconPadding: 16,
+          items: [
+            CurvedNavigationBarItem(
+              child: Icon(PhosphorIcons.house()),
+            ),
+            CurvedNavigationBarItem(
+              child: Icon(PhosphorIcons.magnifyingGlass()),
+            ),
+            CurvedNavigationBarItem(
+              child: Icon(PhosphorIcons.heart()),
+            ),
+            CurvedNavigationBarItem(
+              child: Icon(PhosphorIcons.user()),
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              _tabIndex = index;
+            });
+          },
+        ),
+        body: IndexedStack(
+          index: _tabIndex,
+          children: [
+            const Home(),
+            ListingPage(),
+            const Text('Favorites Page'),
+            const Text('User Page'),
+          ],
+        ),
+      ),
     );
   }
 }

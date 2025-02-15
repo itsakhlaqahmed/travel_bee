@@ -6,19 +6,24 @@ class DetailsCard extends StatelessWidget {
   final String title;
   final String location;
   final String date;
+  // final double Function(AboutListTile) cardHeightOnRender;
 
   const DetailsCard({
     super.key,
     required this.title,
     required this.location,
     required this.date,
+    // required this.cardHeightOnRender,
   });
 
   @override
   Widget build(BuildContext context) {
+
+    // final _cardKey = GlobalKey();
     // final width = me
 
     return Container(
+      // key: ,
       // width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
