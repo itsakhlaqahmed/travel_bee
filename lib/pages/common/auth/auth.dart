@@ -35,8 +35,6 @@ class _AuthState extends State<Auth> {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
