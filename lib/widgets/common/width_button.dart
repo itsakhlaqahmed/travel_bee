@@ -7,9 +7,13 @@ class WidthButton extends StatelessWidget {
   const WidthButton({
     super.key,
     required this.text,
+    required this.onClick,
+    required this.isLoading,
   });
 
   final String text;
+  final Function onClick;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {

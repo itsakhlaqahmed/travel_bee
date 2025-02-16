@@ -11,12 +11,7 @@ class AuthForm extends StatefulWidget {
     super.key,
     required this.isLogin,
   });
-  const AuthForm({
-    super.key,
-    required this.isLogin,
-  });
 
-  final bool isLogin;
   final bool isLogin;
   @override
   State<StatefulWidget> createState() => _AuthFormState();
@@ -25,20 +20,8 @@ class AuthForm extends StatefulWidget {
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
   final _formData = {};
-
-  void onSave(String key, String? value) {
-    _formData[key] = value;
-  }
-
-  String? onValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'This field is required';
-    }
-
-    return null;
-  }
-  final _formData = {};
   bool _isLoading = false;
+
   void onSave(String key, String? value) {
     _formData[key] = value;
   }
@@ -102,7 +85,6 @@ class _AuthFormState extends State<AuthForm> {
     return Form(
       key: _formKey,
       child: Column(
-      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -126,7 +108,6 @@ class _AuthFormState extends State<AuthForm> {
                 ),
           SizedBox(
             height: widget.isLogin ? 0 : 32,
-            height: widget.isLogin ? 0 : 32,
           ),
           InputField(
             label: 'Email',
@@ -134,12 +115,7 @@ class _AuthFormState extends State<AuthForm> {
               onSave('email', value);
             },
             onValidation: onValidation,
-            onSave: (String? value) {
-              onSave('email', value);
-            },
-            onValidation: onValidation,
           ),
-          const SizedBox(
           const SizedBox(
             height: 32,
           ),
@@ -150,18 +126,9 @@ class _AuthFormState extends State<AuthForm> {
               onSave('password', value);
             },
             onValidation: onValidation,
-            hideText: true,
-            onSave: (String? value) {
-              onSave('password', value);
-            },
-            onValidation: onValidation,
           ),
-          const SizedBox(
           const SizedBox(
             height: 64,
-          ),
-          WidthButton(
-            text: widget.isLogin ? 'Log In' : 'Sign Up',
           ),
           WidthButton(
             text: widget.isLogin ? 'Log In' : 'Sign Up',
