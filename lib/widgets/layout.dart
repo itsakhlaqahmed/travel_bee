@@ -19,7 +19,6 @@ class Layout extends StatefulWidget {
 }
 
 class _LayoutState extends State<Layout> {
-  int _tab = 0;
 
   @override
   Widget build(context) {

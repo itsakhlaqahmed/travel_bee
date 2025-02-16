@@ -31,60 +31,62 @@ class _DetailsPageState extends State<DetailsPage> {
       });
     });
 
-    return Layout(
-      enablePadding: false,
-      topBar: false,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              EventImageHeader(
-                imageHeight: imageHeight,
-                imageUrl: '${widget.destination.imageUrl[0]} ',
-              ),
-              Positioned(
-                bottom: -50,
-                left: 0,
-                right: 0,
-                // child: Center(
-                child: Column(
-                  children: [
-                    DetailsCard(
-                      key: _cardKey,
-                      title: widget.destination.name,
-                      location: widget.destination.city,
-                      date: '20 July, 03:00 pm',
-                    ),
-                  ],
+    return Scaffold(
+      body: Layout(
+        enablePadding: false,
+        topBar: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                EventImageHeader(
+                  imageHeight: imageHeight,
+                  imageUrl: '${widget.destination.imageUrl[0]} ',
                 ),
-                // ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: _cardHeight/2+16,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: ThemeLayout.edgeHorizontalPadding),
-            child: Text(
-              widget.destination.description!,
-              style: const TextStyle(
-                color: Colors.black87,
-                fontSize: 14,
+                Positioned(
+                  bottom: -50,
+                  left: 0,
+                  right: 0,
+                  // child: Center(
+                  child: Column(
+                    children: [
+                      DetailsCard(
+                        key: _cardKey,
+                        title: widget.destination.name,
+                        location: widget.destination.city,
+                        date: '20 July, 03:00 pm',
+                      ),
+                    ],
+                  ),
+                  // ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: _cardHeight/2+16,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                  horizontal: ThemeLayout.edgeHorizontalPadding),
+              child: Text(
+                widget.destination.description!,
+                style: const TextStyle(
+                  color: Colors.black87,
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-          // Spacer(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: ThemeLayout.edgeHorizontalPadding),
-            child: WidthButton(),
-          )
-        ],
+            // Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: ThemeLayout.edgeHorizontalPadding),
+              // child: WidthButton(),
+            )
+          ],
+        ),
       ),
     );
   }
