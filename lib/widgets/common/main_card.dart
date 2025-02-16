@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 enum CardType { square, vertical }
@@ -51,6 +50,7 @@ class MainCard extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
+              // height: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -58,27 +58,33 @@ class MainCard extends StatelessWidget {
                   colors: [
                     Colors.transparent,
                     Colors.black.withAlpha((255 * .8).toInt()),
+                    // Color.fromARGB(255, 236, 224, 206)
                   ],
                 ),
               ),
             ),
             Positioned(
               bottom: 16,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    title.length <= 16 ? title: '${title.substring(0, 16)}...',
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Text(
+                  title.length <= 16 ? title : '${title.substring(0, 16)}...',
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    shadows: [
+                      Shadow(
+                        color: Colors.grey,
+                        offset: Offset(1, 1)
+                      ),
+                    ],
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-              
+              ),
             ),
           ],
         ),

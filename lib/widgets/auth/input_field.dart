@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:travel_bee/themes/font_theme.dart';
 
 class InputField extends StatefulWidget {
@@ -44,10 +45,7 @@ class _InputFieldState extends State<InputField> {
         ),
         TextFormField(
           style: const TextStyle(
-            fontWeight: FontWeight.w500,
-            color: Colors.black54,
-            fontSize: 20
-          ),
+              fontWeight: FontWeight.w500, color: Colors.black54, fontSize: 20),
           obscureText: widget.hideText == true ? _isTextHidden : false,
           autocorrect: false,
           onSaved: widget.onSave,
@@ -66,8 +64,8 @@ class _InputFieldState extends State<InputField> {
                       });
                     },
                     icon: _isTextHidden
-                        ? const Icon(Icons.visibility_outlined)
-                        : const Icon(Icons.visibility_off_outlined),
+                        ? Icon(PhosphorIcons.eye())
+                        : Icon(PhosphorIcons.eyeSlash()),
                   )
                 : null,
             // label: Row(

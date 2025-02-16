@@ -60,44 +60,50 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Travel Bee',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: ColorTheme.primaryColor),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorTheme.primaryColor,
+        ),
         fontFamily: GoogleFonts.poppins().fontFamily,
         useMaterial3: true,
       ),
-      home: Scaffold(
-        bottomNavigationBar: CurvedNavigationBar(
-          height: 64,
-          iconPadding: 16,
-          items: [
-            CurvedNavigationBarItem(
-              child: Icon(PhosphorIcons.house()),
-            ),
-            CurvedNavigationBarItem(
-              child: Icon(PhosphorIcons.magnifyingGlass()),
-            ),
-            CurvedNavigationBarItem(
-              child: Icon(PhosphorIcons.heart()),
-            ),
-            CurvedNavigationBarItem(
-              child: Icon(PhosphorIcons.user()),
-            ),
-          ],
-          onTap: (index) {
-            setState(() {
-              _tabIndex = index;
-            });
-          },
-        ),
-        body: IndexedStack(
-          index: _tabIndex,
-          children: [
-            const Home(),
-            ListingPage(),
-            const Text('Favorites Page'),
-            const Text('User Page'),
-          ],
-        ),
-      ),
+      home: const Auth(),
+      // home: Scaffold(
+      //   bottomNavigationBar: CurvedNavigationBar(
+      //     backgroundColor: Color.fromARGB(255, 236, 224, 206),
+      //     color: Color.fromARGB(255, 250, 244, 240),
+      //     // buttonBackgroundColor: Color.fromARGB(255, 236, 224, 206),
+      //     height: 64,
+      //     iconPadding: 16,
+      //     items: [
+      //       CurvedNavigationBarItem(
+      //         child: Icon(PhosphorIcons.house()),
+      //       ),
+      //       CurvedNavigationBarItem(
+      //         child: Icon(PhosphorIcons.magnifyingGlass()),
+      //       ),
+      //       CurvedNavigationBarItem(
+      //         child: Icon(PhosphorIcons.heart()),
+      //       ),
+      //       CurvedNavigationBarItem(
+      //         child: Icon(PhosphorIcons.user()),
+      //       ),
+      //     ],
+      //     onTap: (index) {
+      //       setState(() {
+      //         _tabIndex = index;
+      //       });
+      //     },
+      //   ),
+      //   body: IndexedStack(
+      //     index: _tabIndex,
+      //     children: [
+      //       const Home(),
+      //       ListingPage(),
+      //       const Text('Favorites Page'),
+      //       const Text('User Page'),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

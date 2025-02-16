@@ -4,7 +4,12 @@ import 'package:travel_bee/themes/font_theme.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
 class WidthButton extends StatelessWidget {
-  const WidthButton({super.key});
+  const WidthButton({
+    super.key,
+    required this.text,
+  });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +34,9 @@ class WidthButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'Login',
+            text,
             style: FontTheme.subHeadingStyle.copyWith(
-                fontWeight: FontWeight.w600, color: Colors.black, fontSize: 20),
+                fontWeight: FontWeight.w600, color: Colors.white, fontSize: 20),
           ),
         ),
       ),
