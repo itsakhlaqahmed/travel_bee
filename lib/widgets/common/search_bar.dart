@@ -21,7 +21,7 @@ class _SearchBarCustom extends State<SearchBarCustom> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: ThemeLayout.edgeHorizontalPadding,
+        // horizontal: ThemeLayout.edgeHorizontalPadding,
       ),
       child: Container(
         alignment: Alignment.center,

@@ -7,7 +7,7 @@ class HotelModel {
   final String address;
   final double pricePerNight;
   final double rating;
-  final String amenities;
+  final List<dynamic>  amenities;
   final List<String> imageUrl;
   final String contactNumber;
   final String websiteUrl;
@@ -30,17 +30,17 @@ class HotelModel {
   factory HotelModel.fromFirestore(Map<String, dynamic> data, String id) {
     return HotelModel(
       id: id,
-      name: data['name'],
-      city: data['city'],
-      country: data['country'],
-      destinationId: data['destinationId'],
-      address: data['address'],
-      pricePerNight: data['pricePerNight'].toDouble(),
-      rating: data['rating'].toDouble(),
-      amenities: data['amenities'],
-      imageUrl: data['imageUrl'],
-      contactNumber: data['contactNumber'],
-      websiteUrl: data['websiteUrl'],
+      name: data['name'] ?? 'null',
+      city: data['city'] ?? 'null',
+      country: data['country'] ?? 'null',
+      destinationId: data['destinationId'] ?? 'null',
+      address: data['address'] ?? 'null',
+      pricePerNight: data['pricePerNight'] ?? 0.1,
+      rating: data['rating'] ?? 0.1,
+      amenities: data['amenities'] ?? 'null',
+      imageUrl: [],
+      contactNumber: data['contactNumber'] ?? 'null',
+      websiteUrl: data['websiteUrl'] ?? 'null',
     );
   }
 

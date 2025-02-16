@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_bee/firebase_options.dart';
 import 'package:travel_bee/models/destination_model.dart';
 import 'package:travel_bee/pages/common/auth/auth.dart';
+import 'package:travel_bee/pages/main_home.dart';
 import 'package:travel_bee/themes/color_theme.dart';
 
 void main() async {
@@ -60,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.poppins().fontFamily,
         useMaterial3: true,
       ),
-      home: const Auth(),
+      home: const MainHome(),
     );
   }
 }

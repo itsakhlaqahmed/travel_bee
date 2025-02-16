@@ -14,6 +14,7 @@ class Home extends ConsumerWidget {
 
     return data.when(
       data: (data) {
+
         return Layout(
           child: CardGallery(
             data: data,
