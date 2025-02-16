@@ -1,9 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_bee/pages/main_home.dart';
 import 'package:travel_bee/services/auth_service.dart';
-import 'package:travel_bee/themes/font_theme.dart';
 import 'package:travel_bee/widgets/auth/input_field.dart';
+import 'package:travel_bee/widgets/common/custom_snackbar.dart';
 import 'package:travel_bee/widgets/common/width_button.dart';
 
 class AuthForm extends StatefulWidget {
@@ -34,49 +35,58 @@ class _AuthFormState extends State<AuthForm> {
     return null;
   }
 
+  navigateTo(BuildContext context, Widget page) {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (ctx) => page));
+  }
+
   Future<void> _login() async {
     await AuthService().signOut();
 
-    try {
-      User? user = await AuthService().signInWithEmailAndPassword(
-        email: _formData['email'],
-        password: _formData['password'],
-      );
-    } catch (e) {
-      if (kDebugMode) {
-        print('Auth Error A-101');
-      }
-    }
+    await AuthService().signInWithEmailAndPassword(
+      email: _formData['email'],
+      password: _formData['password'],
+    );
   }
 
   Future<void> _signup() async {
-    bool validated = _formKey.currentState!.validate();
-    if (validated) {
-      _formKey.currentState!.save();
-      try {
-        User? user = await AuthService().createUserWithEmailAndPassword(
-          email: _formData['email'],
-          password: _formData['password'],
-        );
-      } catch (err) {
-        // handle error here
-      }
-    }
+    _formKey.currentState!.save();
+
+    // User? user =
+    await AuthService().createUserWithEmailAndPassword(
+      email: _formData['email'],
+      password: _formData['password'],
+    );
   }
 
   void _submitForm() async {
-    setState(() {
+     setState(() {
       _isLoading = true;
     });
-
     bool isValid = _formKey.currentState!.validate();
     if (isValid) {
       _formKey.currentState!.save();
-      widget.isLogin ? await _login() : await _signup();
+      try {
+        widget.isLogin ? await _login() : await _signup();
+
+        // ignore: use_build_context_synchronously
+        navigateTo(context, const MainHome());
+      } catch (err) {
+        CustomSnackBarBuilder().showCustomSnackBar(
+          // ignore: use_build_context_synchronously
+          context,
+          snackBarType: CustomSnackbar.error,
+          text: err.toString(),
+        );
+        if (kDebugMode) {
+          print('Auth Error A-101');
+          print(err.toString());
+        }
+      }
     }
 
     setState(() {
-      _isLoading = true;
+      _isLoading = false;
     });
   }
 
@@ -88,15 +98,6 @@ class _AuthFormState extends State<AuthForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          widget.isLogin
-              ? const SizedBox.shrink()
-              : InputField(
-                  label: 'Name',
-                  onSave: (String? value) {
-                    onSave('Name', value);
-                  },
-                  onValidation: onValidation,
-                ),
           widget.isLogin
               ? const SizedBox.shrink()
               : InputField(
@@ -133,7 +134,7 @@ class _AuthFormState extends State<AuthForm> {
           WidthButton(
             text: widget.isLogin ? 'Log In' : 'Sign Up',
             onClick: _submitForm,
-            isLoading: false,
+            isLoading: _isLoading,
           ),
         ],
       ),

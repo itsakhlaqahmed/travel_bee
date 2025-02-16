@@ -12,18 +12,21 @@ class WidthButton extends StatelessWidget {
   });
 
   final String text;
-  final Function onClick;
+  final Function() onClick;
   final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: isLoading ? null : onClick(),
+    return GestureDetector(
+      onTap: isLoading
+          ? () {
+              print('click');
+            }
+          : onClick,
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
+        padding: EdgeInsets.all(
+          isLoading ? 10 : 20,
         ),
         decoration: BoxDecoration(
           color: ColorTheme.primaryColor,
@@ -38,11 +41,22 @@ class WidthButton extends StatelessWidget {
           ],
         ),
         child: Center(
-          child: Text(
-            text,
-            style: FontTheme.subHeadingStyle.copyWith(
-                fontWeight: FontWeight.w600, color: Colors.white, fontSize: 20),
-          ),
+          child: isLoading
+              ? const SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: CircularProgressIndicator(
+                    color: ColorTheme.backgroundGrey,
+                  ),
+                )
+              : Text(
+                  text,
+                  style: FontTheme.subHeadingStyle.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
         ),
       ),
     );

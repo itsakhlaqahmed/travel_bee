@@ -10,7 +10,7 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.black54,
+      color: ColorTheme.primaryColorTint,
       padding: EdgeInsets.symmetric(
         horizontal: ThemeLayout.edgeHorizontalPadding,
       ),

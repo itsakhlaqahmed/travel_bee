@@ -8,19 +8,21 @@ class AuthService {
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
-  User? get getAuth => _firebaseAuth.currentUser; // retruns current user if auth else null;
+  User? get getAuth =>
+      _firebaseAuth.currentUser; // retruns current user if auth else null;
 
   Future<User?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
+    signOut();
     final UserCredential userCredential = await _firebaseAuth
         .signInWithEmailAndPassword(email: email, password: password);
-
 
     return userCredential.user;
   }
 
   Future<User?> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
+    signOut();
     final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
