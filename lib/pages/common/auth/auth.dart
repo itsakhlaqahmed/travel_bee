@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_bee/themes/color_theme.dart';
 import 'package:travel_bee/themes/font_theme.dart';
 import 'package:travel_bee/widgets/auth/auth_form.dart';
@@ -44,7 +45,18 @@ class _AuthState extends State<Auth> {
         child: Column(
           children: [
             const SizedBox(
-              height: 120,
+              height: 60,
+            ),
+            Text(
+              "@travel bee",
+              style: GoogleFonts.cormorantGaramond().copyWith(
+                fontSize: 60,
+                fontWeight: FontWeight.w900,
+                color: ColorTheme.primaryColor,
+              ),
+            ),
+            const SizedBox(
+              height: 40,
             ),
             Text(
               _isLoginSelected ? 'Welcome Back' : 'Get Started Now',

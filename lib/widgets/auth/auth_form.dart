@@ -60,7 +60,7 @@ class _AuthFormState extends State<AuthForm> {
   }
 
   void _submitForm() async {
-     setState(() {
+    setState(() {
       _isLoading = true;
     });
     bool isValid = _formKey.currentState!.validate();
@@ -102,6 +102,7 @@ class _AuthFormState extends State<AuthForm> {
               ? const SizedBox.shrink()
               : InputField(
                   label: 'Name',
+                  placeholderText: 'Enter your name',
                   onSave: (String? value) {
                     onSave('Name', value);
                   },
@@ -112,6 +113,7 @@ class _AuthFormState extends State<AuthForm> {
           ),
           InputField(
             label: 'Email',
+            placeholderText: 'Enter your email',
             onSave: (String? value) {
               onSave('email', value);
             },
@@ -122,11 +124,12 @@ class _AuthFormState extends State<AuthForm> {
           ),
           InputField(
             label: 'Password',
+            onValidation: onValidation,
+            placeholderText: 'Enter password',
             hideText: true,
             onSave: (String? value) {
               onSave('password', value);
             },
-            onValidation: onValidation,
           ),
           const SizedBox(
             height: 64,

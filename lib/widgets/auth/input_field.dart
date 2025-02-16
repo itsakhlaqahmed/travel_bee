@@ -6,7 +6,7 @@ class InputField extends StatefulWidget {
   const InputField({
     super.key,
     required this.label,
-    this.placeholderText,
+    required this.placeholderText,
     this.placeholderIcon,
     this.onSave,
     this.onValidation,
@@ -15,7 +15,7 @@ class InputField extends StatefulWidget {
   });
 
   final String label;
-  final String? placeholderText;
+  final String placeholderText;
   final IconData? placeholderIcon;
   final bool? hideText;
   final void Function(String?)? onSave;
@@ -68,18 +68,8 @@ class _InputFieldState extends State<InputField> {
                         : Icon(PhosphorIcons.eyeSlash()),
                   )
                 : null,
-            // label: Row(
-            //   children: [
-            //     Icon(
-            //       widget.placeholderIcon,
-            //       // color: const Color.fromARGB(255, 253, 129, 59),
-            //     ),
-            //     const SizedBox(
-            //       width: 8,
-            //     ),
-            //     // Text(widget.placeholderText),
-            //   ],
-            // ),
+            label: Text(widget.placeholderText),
+            labelStyle: const TextStyle(color: Colors.grey),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(48),
               borderSide: const BorderSide(

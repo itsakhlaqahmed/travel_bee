@@ -10,7 +10,7 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorTheme.primaryColorTint,
+      // color: ColorTheme.primaryColorTint,
       padding: EdgeInsets.symmetric(
         horizontal: ThemeLayout.edgeHorizontalPadding,
       ),
@@ -19,8 +19,8 @@ class TopBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Travel Bee",
-            style: GoogleFonts.cedarvilleCursive().copyWith(
+            "@travel bee",
+            style: GoogleFonts.cormorantGaramond().copyWith(
               fontSize: 32,
               fontWeight: FontWeight.w900,
               color: ColorTheme.primaryColor,
