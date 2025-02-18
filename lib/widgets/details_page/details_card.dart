@@ -43,6 +43,7 @@ class DetailsCard extends StatelessWidget {
         children: [
           Text(
             title,
+            
             style: const TextStyle(
               fontSize: FontTheme.titleSize,
               fontWeight: FontWeight.bold,
@@ -60,6 +61,7 @@ class DetailsCard extends StatelessWidget {
               const SizedBox(width: 6),
               Text(
                 location,
+                overflow: TextOverflow.ellipsis,
                 style: FontTheme.subHeadingStyle,
               ),
             ],

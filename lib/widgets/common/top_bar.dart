@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:travel_bee/themes/color_theme.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
 class TopBar extends StatelessWidget {
@@ -11,6 +9,7 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: ColorTheme.primaryColorTint,
+      color: Colors.white,
       padding: EdgeInsets.symmetric(
         horizontal: ThemeLayout.edgeHorizontalPadding,
       ),
@@ -18,14 +17,18 @@ class TopBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            "@travel bee",
-            style: GoogleFonts.cormorantGaramond().copyWith(
-              fontSize: 32,
-              fontWeight: FontWeight.w900,
-              color: ColorTheme.primaryColor,
-            ),
+          Image.asset(
+            'assets/logo_cropped.jpg',
+            width: 150,
           ),
+          // Text(
+          //   "@travel bee",
+          //   style: GoogleFonts.cormorantGaramond().copyWith(
+          //     fontSize: 32,
+          //     fontWeight: FontWeight.w900,
+          //     color: ColorTheme.primaryColor,
+          //   ),
+          // ),
           const SizedBox(width: 6),
           Container(
             decoration: BoxDecoration(
