@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:travel_bee/pages/hotel_details_page.dart';
 import 'package:travel_bee/providers/hotel_provider.dart';
 import 'package:travel_bee/widgets/common/filter_list.dart';
 import 'package:travel_bee/widgets/common/search_bar.dart';
@@ -16,14 +17,13 @@ class ListingPage extends ConsumerStatefulWidget {
 }
 
 class _ListPageState extends ConsumerState<ConsumerStatefulWidget> {
-  final List<Map<String, String>> demoData = [
-    {
-      'imageUrl':
-          'https://www.openislamabad.org/wp-content/uploads/2018/10/Pakistan-National-Monument-Islamabad-Pakistan-2635-2-1.jpg',
-      'title': 'Islamabad',
-      'description': 'The capital of Pakistan. A beautiful country. we love it',
-    },
-  ];
+  _onCardTap(hotel) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => HotelDetailPage(hotel: hotel),
+      ),
+    );
+  }
 
   @override
   Widget build(context) {
@@ -56,16 +56,14 @@ class _ListPageState extends ConsumerState<ConsumerStatefulWidget> {
                     children: [
                       ListCard(
                         cardHeight: cardHeight,
-                        title: demoData[index]['title']!,
-                        description: demoData[index]['description']!,
-                        imageUrl: demoData[index]['imageUrl']!,
+                        title: data[index].name,
+                        description: data[index].city,
+                        imageUrl: data[index].imageUrl[0],
+                        rating: data[index].rating!,
+                        onTap: () {
+                          _onCardTap(data[index]);
+                        },
                       ),
-                      //  ListCard(
-                      //   cardHeight: cardHeight,
-                      //   title: data[index].name,
-                      //   description: data[index].country,
-                      //   imageUrl: data[index].imageUrl[0],
-                      // ),
                       const SizedBox(
                         height: 16,
                       )
