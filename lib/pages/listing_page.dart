@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:travel_bee/models/hotel_model.dart';
 import 'package:travel_bee/pages/hotel_details_page.dart';
 import 'package:travel_bee/providers/hotel_provider.dart';
 import 'package:travel_bee/widgets/common/filter_list.dart';
@@ -17,7 +18,13 @@ class ListingPage extends ConsumerStatefulWidget {
 }
 
 class _ListPageState extends ConsumerState<ConsumerStatefulWidget> {
-  _onCardTap(hotel) {
+  int providerIndex = 0;
+  StreamProvider<List<HotelModel>> _provider = hotelProvider;
+
+  String _selectedCity = '';
+  String _searchText = '';
+
+  _onCardTap(HotelModel hotel) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => HotelDetailPage(hotel: hotel),
@@ -25,20 +32,49 @@ class _ListPageState extends ConsumerState<ConsumerStatefulWidget> {
     );
   }
 
+  _onSelectFilter(city) {
+    setState(() {
+      providerIndex = 1;
+      _selectedCity = city;
+    });
+  }
+
+  _searchHotel(text) {
+    print('serach clicked');
+    setState(() {
+      providerIndex = 2;
+      _searchText = text;
+    });
+  }
+
   @override
   Widget build(context) {
-    final data = ref.watch(hotelProvider);
+    switch (providerIndex) {
+      case 0:
+        _provider = hotelProvider;
+        break;
+      case 1:
+        _provider = hotelProviderByCity(_selectedCity);
+        break;
+      case 2:
+        _provider = hotelProviderByName(_searchText);
+        break;
+    }
+
+    final data = ref.watch(_provider);
     const double cardHeight = 110;
 
     return Layout(
       child: Column(
         children: [
-          SearchBarCustom(onChange: (a) {}),
+          SearchBarCustom(
+            onTapSearch: _searchHotel,
+          ),
           const SizedBox(
             height: 12,
           ),
           FilterList(
-            (city) {},
+            _onSelectFilter,
           ),
           const SizedBox(
             height: 24,
@@ -78,7 +114,7 @@ class _ListPageState extends ConsumerState<ConsumerStatefulWidget> {
               print(stack);
               return Text('error');
             },
-            loading: () => Text('loading'),
+            loading: () => CircularProgressIndicator.adaptive(),
           ),
         ],
       ),

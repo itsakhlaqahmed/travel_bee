@@ -29,6 +29,7 @@ class _LayoutState extends State<Layout> {
       child: Column(
         children: [
           if (widget.topBar != false) const TopBar(),
+
           Expanded(
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
@@ -36,6 +37,7 @@ class _LayoutState extends State<Layout> {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
+                      vertical: widget.topBar != false ? 24 : 0,
                       horizontal: padding,
                     ),
                     child: widget.child,
@@ -44,9 +46,9 @@ class _LayoutState extends State<Layout> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 32,
-          )
+          // const SizedBox(
+          //   height: 32,
+          // )
         ],
       ),
     );

@@ -16,6 +16,19 @@ final hotelProviderByCity =
   });
 });
 
+final hotelProviderByName =
+    StreamProvider.family<List<HotelModel>, String>((ref, query) {
+  final firestore = ref.read(firebaseProvider);
+
+  return firestore.collection('hotels')
+      .where('name', isGreaterThanOrEqualTo: query)
+      .where('name', isLessThan: '$query\uf8ff') // Ensures correct filtering
+      .snapshots()
+      .map((snapshot) => snapshot.docs.map((doc) =>
+          HotelModel.fromFirestore(doc.data(), doc.id)).toList());
+});
+
+
 
 final hotelProvider = StreamProvider<List<HotelModel>>((ref) {
   final firestore = ref.read(firebaseProvider);

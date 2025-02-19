@@ -5,17 +5,23 @@ import 'package:travel_bee/themes/theme_layout.dart';
 class SearchBarCustom extends StatefulWidget {
   const SearchBarCustom({
     super.key,
-    required this.onChange,
+    required this.onTapSearch,
   });
 
-  final void Function(String?) onChange;
+  final void Function(String?) onTapSearch;
 
   @override
   State<SearchBarCustom> createState() => _SearchBarCustom();
 }
 
 class _SearchBarCustom extends State<SearchBarCustom> {
-  void a() {}
+  String input = '';
+
+  _onChange(String? text) {
+    setState(() {
+      input = text ?? '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,28 +31,34 @@ class _SearchBarCustom extends State<SearchBarCustom> {
       ),
       child: Container(
         alignment: Alignment.center,
-        height: 50,
+        // height: 50,
         decoration: BoxDecoration(
           color: ColorTheme.backgroundGrey,
           borderRadius: BorderRadius.circular(40),
         ),
         child: TextField(
           textAlignVertical: TextAlignVertical.center,
-          onChanged: widget.onChange,
+          onChanged: _onChange,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
-          decoration: const InputDecoration(
+          decoration:  InputDecoration(
             hintText: 'Search Places',
-            contentPadding: EdgeInsets.symmetric(
+            contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 8,
             ),
-            suffixIcon: Icon(
-              Icons.search,
-              color: Colors.black,
+            suffix: GestureDetector(
+              onTap: () {
+                widget.onTapSearch(input);
+              },
+              child: const Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
             ),
+            
             border: InputBorder.none,
           ),
         ),

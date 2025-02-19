@@ -14,10 +14,25 @@ class Home extends ConsumerWidget {
 
     return data.when(
       data: (data) {
-
         return Layout(
-          child: CardGallery(
-            data: data,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Featured Destinations',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CardGallery(
+                data: data,
+              ),
+            ],
           ),
         );
       },
