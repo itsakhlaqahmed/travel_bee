@@ -4,6 +4,9 @@ import 'package:travel_bee/pages/listing_page.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:travel_bee/pages/package_details.dart';
+import 'package:travel_bee/pages/packages_page.dart';
+import 'package:travel_bee/pages/review.dart';
 import 'package:travel_bee/themes/color_theme.dart';
 
 class MainHome extends StatefulWidget {
@@ -50,8 +53,8 @@ class _MainHomeState extends State<MainHome> {
         children: [
           const Home(),
           ListingPage(),
-          const Text('Favorites Page'),
-          const Text('User Page'),
+          PackagesPage(),
+          ReviewFormScreen()
         ],
       ),
     );

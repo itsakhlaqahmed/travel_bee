@@ -19,74 +19,77 @@ class MainCard extends StatelessWidget {
   final Function? onTap;
 
   @override
-  Widget build(context) {
-    final height = type == CardType.vertical ? width * (4 / 3) : width;
+  Widget build(BuildContext context) {
+    final double height = type == CardType.vertical ? width * (4 / 3) : width;
 
-    return InkWell(
+    return GestureDetector(
       onTap: onTap != null ? () => onTap!() : null,
       child: Container(
         width: width,
         height: height,
-        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-            color: Colors.amberAccent,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withAlpha(85),
-                spreadRadius: 2,
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-              )
-            ]),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.network(
-              image,
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height,
-              width: double.infinity,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              spreadRadius: 2,
+              offset: const Offset(0, 4),
             ),
-            Container(
-              width: double.infinity,
-              // height: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withAlpha((255 * .8).toInt()),
-                    // Color.fromARGB(255, 236, 224, 206)
-                  ],
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Stack(
+            children: [
+              // 🌆 Background Image
+              Positioned.fill(
+                child: Image.network(
+                  image,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-            Positioned(
-              bottom: 16,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: Text(
-                  title.length <= 16 ? title : '${title.substring(0, 16)}...',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: const TextStyle(
-                    shadows: [
-                      Shadow(
-                        color: Colors.grey,
-                        offset: Offset(1, 1)
-                      ),
+
+              // 🌓 Gradient Overlay
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withOpacity(0.7),
                     ],
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
                   ),
                 ),
               ),
-            ),
-          ],
+
+              // 🏷 Title Text
+              Positioned(
+                bottom: 16,
+                left: 12,
+                right: 12,
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black26,
+                        offset: Offset(1, 1),
+                        blurRadius: 3,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

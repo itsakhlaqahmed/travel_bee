@@ -16,6 +16,18 @@ final hotelProviderByCity =
   });
 });
 
+// final hotelProviderByName =  Provider.family<List<HotelModel>, String>((ref, query) {
+//   final hotels = ref.watch(hotelProvider).maybeWhen<List<HotelModel>>(
+//     data: (hotels) => hotels, 
+//     orElse: () => [], 
+//   );
+
+//   if (query.isEmpty) return hotels; 
+
+//   return hotels.where((hotel) =>
+//       hotel.name.toLowerCase().contains(query.toLowerCase())).toList();
+// });
+
 final hotelProviderByName =
     StreamProvider.family<List<HotelModel>, String>((ref, query) {
   final firestore = ref.read(firebaseProvider);
