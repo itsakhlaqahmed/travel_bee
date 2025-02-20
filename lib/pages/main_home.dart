@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/pages/checkout_page.dart';
 import 'package:travel_bee/pages/home.dart';
 import 'package:travel_bee/pages/listing_page.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
@@ -54,7 +55,22 @@ class _MainHomeState extends State<MainHome> {
           const Home(),
           ListingPage(),
           PackagesPage(),
-          ReviewFormScreen()
+          // ReviewFormScreen()
+          PackageDetailsPage(
+            duration: '4 Days',
+            endDate: '20/02/2025',
+            image:
+                "https://adventureplanners.net/wp-content/uploads/2021/04/22046822_1534122226631410_8854734913182488307_n-2.jpg",
+            name: '3 Days Hotels',
+            price: 12000,
+            startDate: '20/02/2025',
+          )
+          // PurchaseDetailScreen(
+          //   title: 'Karachi',
+          //   date: '20/2/2025',
+          //   imageUrl: 'https://i.dawn.com/primary/2021/01/5ff579f068756.jpg',
+          //   pricePerGuest: 15000,
+          // ),
         ],
       ),
     );

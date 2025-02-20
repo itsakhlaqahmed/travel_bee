@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 enum CardType { square, vertical }
 
@@ -44,8 +45,8 @@ class MainCard extends StatelessWidget {
             children: [
               // 🌆 Background Image
               Positioned.fill(
-                child: Image.network(
-                  image,
+                child: CachedNetworkImage(
+                  imageUrl: image,
                   fit: BoxFit.cover,
                 ),
               ),

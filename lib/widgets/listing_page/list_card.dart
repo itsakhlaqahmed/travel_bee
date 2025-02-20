@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:travel_bee/themes/font_theme.dart';
@@ -9,7 +10,8 @@ class ListCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.imageUrl,
-    required this.rating, required this.onTap,
+    required this.rating,
+    required this.onTap,
   });
 
   final double cardHeight;
@@ -42,9 +44,9 @@ class ListCard extends StatelessWidget {
                 ),
               ],
             ),
-            child: Image.network(
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
               fit: BoxFit.cover,
-              imageUrl,
             ),
           ),
           const SizedBox(width: 8),
@@ -98,7 +100,7 @@ class ListCard extends StatelessWidget {
                       ),
 
                       Text(
-                        rating > 0? rating.toString() : 4.2.toString(),
+                        rating > 0 ? rating.toString() : 4.2.toString(),
                         style: FontTheme.subHeadingStyle,
                       ),
                       Padding(

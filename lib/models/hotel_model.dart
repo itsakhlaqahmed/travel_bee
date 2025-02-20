@@ -36,7 +36,7 @@ class HotelModel {
       city: data['city'] ?? 'null',
       country: data['country'] ?? 'null',
       destinationId: data['destinationId'] ?? 'null',
-      // address: data['address'] ?? 'null',
+      address: data['address'] ?? 'null',
       // pricePerNight: data['pricePerNight'] ?? 0.1,
       rating: data['rating'].toDouble() ?? 4.3,
       // amenities: data['amenities'] ?? 'null',
