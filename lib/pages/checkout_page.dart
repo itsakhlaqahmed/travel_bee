@@ -202,7 +202,7 @@ class ConfirmationScreen extends ConsumerWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (ctx) => const MainHome())),
+                    MaterialPageRoute(builder: (ctx) => const MainHome(name: 'Jaweria',))),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorTheme.primaryColor),
                 child:

@@ -3,14 +3,15 @@ import 'package:travel_bee/pages/order_list.dart';
 import 'package:travel_bee/services/auth_service.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({super.key, required this.name});
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-        ),
+        decoration: const BoxDecoration(),
         child: Column(
           children: [
             const SizedBox(height: 60), // Spacing for status bar
@@ -24,8 +25,8 @@ class ProfilePage extends StatelessWidget {
                         "https://randomuser.me/api/portraits/women/10.jpg"), // Replace with actual user image
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    "Jaweria",
+                  Text(
+                    name,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 5),

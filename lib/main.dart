@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.poppins().fontFamily,
         useMaterial3: true,
       ),
-      home: const MainHome(),
+      home: const Auth(),
     );
   }
 }

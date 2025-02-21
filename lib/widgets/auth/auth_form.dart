@@ -70,7 +70,11 @@ class _AuthFormState extends State<AuthForm> {
         widget.isLogin ? await _login() : await _signup();
 
         // ignore: use_build_context_synchronously
-        navigateTo(context, const MainHome());
+        navigateTo(
+            context,
+            MainHome(
+              name: _formData['name'],
+            ));
       } catch (err) {
         CustomSnackBarBuilder().showCustomSnackBar(
           // ignore: use_build_context_synchronously
@@ -104,7 +108,7 @@ class _AuthFormState extends State<AuthForm> {
                   label: 'Name',
                   placeholderText: 'Enter your name',
                   onSave: (String? value) {
-                    onSave('Name', value);
+                    onSave('name', value);
                   },
                   onValidation: onValidation,
                 ),
