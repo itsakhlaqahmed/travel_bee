@@ -1,8 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_bee/models/package_model.dart';
+import 'package:travel_bee/pages/package_details.dart';
 import 'package:travel_bee/themes/color_theme.dart';
 import 'package:travel_bee/themes/font_theme.dart';
 
 class TravelCard extends StatelessWidget {
+  const TravelCard({super.key, required this.package});
+
+  final PackageModel package;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +39,19 @@ class TravelCard extends StatelessWidget {
                   ],
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => PackageDetailsPage(
+                            name: package.name,
+                            duration: package.duration.toString(),
+                            price: package.price,
+                            startDate: package.startDate,
+                            endDate: package.endDate,
+                            image: package.image),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -46,28 +65,29 @@ class TravelCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Text("Tour of ancient Paris",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            child: Text(package.name,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Price for 7 days",
-                    style: TextStyle(color: Colors.grey, fontSize: 12)),
-                Text("Rs. 30,000",
+                Text("Price for ${package.duration}",
+                    style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                Text("Rs. ${package.price}",
                     style:
                         TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
           ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(16),
                 bottomRight: Radius.circular(16)),
-            child: Image.network(
-                "https://adventureplanners.net/wp-content/uploads/2021/04/22046822_1534122226631410_8854734913182488307_n-2.jpg",
+            child: CachedNetworkImage(
+                imageUrl: package.image,
                 height: 150,
                 width: double.infinity,
                 fit: BoxFit.cover),

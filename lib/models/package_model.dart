@@ -1,58 +1,58 @@
 class PackageModel {
   final String id;
   final String name;
-  final List<DateTime> dates;
+  final String startDate;
+  final String endDate;
   final double price;
   final String company;
   final List<String> locations;
-  final List<String> images;
+  final String image;
   final String description;
   final double rating;
-  final int duration; // in days
-  final bool isPopular;
+  final int duration; 
 
   PackageModel({
     required this.id,
     required this.name,
-    required this.dates,
+    required this.startDate,
+    required this.endDate,
     required this.price,
     required this.company,
     required this.locations,
-    required this.images,
+    required this.image,
     required this.description,
     required this.rating,
     required this.duration,
-    required this.isPopular,
   });
 
   factory PackageModel.fromFirestore(Map<String, dynamic> data, String id) {
     return PackageModel(
       id: id,
       name: data['name'] ?? '',
-      dates: (data['dates'] as List<dynamic>).map((e) => DateTime.parse(e)).toList(),
+      startDate: data['startDate'] ?? '21-02-2025',
+      endDate: data['startDate'] ?? '30-02-2025',
       price: (data['price'] ?? 0).toDouble(),
       company: data['company'] ?? '',
       locations: List<String>.from(data['locations'] ?? []),
-      images: List<String>.from(data['images'] ?? []),
+      image: data['image'] ?? '',
       description: data['description'] ?? '',
       rating: (data['rating'] ?? 0).toDouble(),
       duration: data['duration'] ?? 0,
-      isPopular: data['isPopular'] ?? false,
+      // isPopular: data['isPopular'] ?? false,
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
       'name': name,
-      'dates': dates.map((e) => e.toIso8601String()).toList(),
-      'price': price,
-      'company': company,
-      'locations': locations,
-      'images': images,
-      'description': description,
-      'rating': rating,
-      'duration': duration,
-      'isPopular': isPopular,
+      // 'price': price,
+      // 'company': company,
+      // // 'locations': locations,
+      // 'images': image,
+      // 'description': description,
+      // 'rating': rating,
+      // 'duration': duration,
+      // 'isPopular': isPopular,
     };
   }
 }

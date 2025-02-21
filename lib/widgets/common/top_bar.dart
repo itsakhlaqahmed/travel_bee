@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:travel_bee/pages/common/auth/auth.dart';
+import 'package:travel_bee/services/auth_service.dart';
 import 'package:travel_bee/themes/theme_layout.dart';
 
 class TopBar extends StatelessWidget {
@@ -30,12 +32,18 @@ class TopBar extends StatelessWidget {
           //   ),
           // ),
           const SizedBox(width: 6),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              PhosphorIcons.user(),
+          GestureDetector(
+            onTap: (){
+              AuthService().signOut();
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const Auth()));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(
+                PhosphorIcons.power(),
+              ),
             ),
           ),
         ],

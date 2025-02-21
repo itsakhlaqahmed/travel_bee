@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_bee/pages/checkout_page.dart';
 import 'package:travel_bee/widgets/common/width_button.dart';
 import 'package:travel_bee/widgets/packages_page/city_card_list.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class PackageDetailsPage extends StatelessWidget {
   final String name;
@@ -50,9 +51,11 @@ class PackageDetailsPage extends StatelessWidget {
       body: Stack(
         children: [
           // Background Image
-          Positioned.fill(
-            child: Image.network(
-              image,
+          Positioned(
+            height: 500,
+            
+            child: CachedNetworkImage(
+              imageUrl: image,
               fit: BoxFit.cover,
             ),
           ),
