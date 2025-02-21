@@ -8,6 +8,7 @@ import 'package:travel_bee/widgets/details_page/details_card.dart';
 import 'package:travel_bee/widgets/details_page/event_image_header.dart';
 import 'package:travel_bee/widgets/layout.dart';
 import 'package:travel_bee/models/review.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({super.key, required this.destination});
@@ -78,6 +79,12 @@ class _DetailsPageState extends State<DetailsPage> {
     reviewText: "Wonderful hiking trails with scenic views at every turn!",
   ),
 ];
+ Future<void> openMap(double lat, double lng) async {
+    final Uri url = Uri.parse("geo:$lat,$lng?q=$lat,$lng");
+    if (!await launchUrl(url)) {
+      throw 'Could not open the map.';
+    }
+  }
 
 
   @override
@@ -102,31 +109,36 @@ class _DetailsPageState extends State<DetailsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                EventImageHeader(
-                  imageHeight: imageHeight,
-                  imageUrl: '${widget.destination.imageUrl[0]} ',
-                ),
-                Positioned(
-                  bottom: -50,
-                  left: 0,
-                  right: 0,
-                  // child: Center(
-                  child: Column(
-                    children: [
-                      DetailsCard(
-                        key: _cardKey,
-                        title: widget.destination.name,
-                        location: widget.destination.city,
-                        date: '20 July, 03:00 pm',
-                      ),
-                    ],
+            GestureDetector(
+              onTap: () {
+                openMap(widget.destination.latitude!, widget.destination.longitude!);
+              },
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  EventImageHeader(
+                    imageHeight: imageHeight,
+                    imageUrl: '${widget.destination.imageUrl[0]} ',
                   ),
-                  // ),
-                ),
-              ],
+                  Positioned(
+                    bottom: -50,
+                    left: 0,
+                    right: 0,
+                    // child: Center(
+                    child: Column(
+                      children: [
+                        DetailsCard(
+                          key: _cardKey,
+                          title: widget.destination.name,
+                          location: widget.destination.city,
+                          date: '20 July, 03:00 pm',
+                        ),
+                      ],
+                    ),
+                    // ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: _cardHeight / 2 + 16,
