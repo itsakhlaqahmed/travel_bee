@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/pages/order_list.dart';
 import 'package:travel_bee/services/auth_service.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -9,11 +10,6 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFFE8D9F1), Color(0xFFFAF6FC)], // Light gradient
-          ),
         ),
         child: Column(
           children: [
@@ -58,9 +54,12 @@ class ProfilePage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  _buildOption(Icons.person, "Profile"),
+                  _buildOption(Icons.person, "Profile", () {}),
                   const Divider(),
-                  _buildOption(Icons.card_travel, "My Packages"),
+                  _buildOption(Icons.card_travel, "My Packages", () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (ctx) => OrderPage()));
+                  }),
                 ],
               ),
             ),
@@ -76,7 +75,8 @@ class ProfilePage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                 elevation: 5,
               ),
               child: const Text(
@@ -91,14 +91,13 @@ class ProfilePage extends StatelessWidget {
   }
 
   // Widget for Profile Options
-  Widget _buildOption(IconData icon, String label) {
+  Widget _buildOption(IconData icon, String label, Function() onClick) {
     return ListTile(
-      leading: Icon(icon, color: Colors.black54),
-      title: Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-      onTap: () {
-        // Handle navigation
-      },
-    );
+        leading: Icon(icon, color: Colors.black54),
+        title: Text(label,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+        trailing:
+            const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+        onTap: onClick);
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:travel_bee/models/package_model.dart';
 import 'package:travel_bee/pages/checkout_page.dart';
 import 'package:travel_bee/pages/home.dart';
 import 'package:travel_bee/pages/listing_page.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:travel_bee/pages/order_list.dart';
 import 'package:travel_bee/pages/package_details.dart';
 import 'package:travel_bee/pages/packages_page.dart';
 import 'package:travel_bee/pages/profile.dart';
@@ -58,6 +60,7 @@ class _MainHomeState extends State<MainHome> {
           PackagesPage(),
           // ReviewFormScreen()
           ProfilePage()
+          // OrderPage(),
           // PackageDetailsPage(
           //   duration: '4 Days',
           //   endDate: '20/02/2025',
